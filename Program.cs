@@ -35,12 +35,24 @@ namespace Lesson3
                 System.Console.WriteLine($"Минимальное из чисел : {min}");
 
             //задача 4
-            double[] vars = new double[3];
             System.Console.WriteLine("\nВведите значения ваших переменных a,b,c (в таком порядке) : ");
-            for (int i = 2; i >= 0; i--)
-                vars[i] = double.Parse(Console.ReadLine());
-            Array.Sort<double>(vars);
-            System.Console.WriteLine($"Значения ваших переменных теперь :\na = {vars[2]}\nb = {vars[1]}\nc = {vars[0]}");
+            int a = int.Parse(Console.ReadLine());
+            int b = int.Parse(Console.ReadLine());
+            int c = int.Parse(Console.ReadLine());
+            int temp = a;
+            if (a < b || a < c)
+            {
+                a = b > c ? b : c;
+                if (b > c) b = temp;
+                else c = temp;
+            }
+            if (c > b)
+            {
+                temp = b;
+                b = c;
+                c = temp;
+            }
+            System.Console.WriteLine($"Значения ваших переменных теперь :\na = {a}\nb = {b}\nc = {c}");
         }
     }
 }
